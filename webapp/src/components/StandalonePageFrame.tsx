@@ -1,12 +1,14 @@
 import type { ComponentChildren } from 'preact';
 import { APP_VERSION } from '@shared/app-version';
 
+
 interface StandalonePageFrameProps {
   title: string;
   eyebrow?: ComponentChildren;
   titleAccessory?: ComponentChildren;
   children: ComponentChildren;
 }
+
 
 export default function StandalonePageFrame(props: StandalonePageFrameProps) {
   return (
@@ -18,6 +20,7 @@ export default function StandalonePageFrame(props: StandalonePageFrameProps) {
         </div>
       </div>
 
+
       <div className="auth-card">
         {props.eyebrow && <div className="standalone-eyebrow">{props.eyebrow}</div>}
         <div className="standalone-title-row">
@@ -27,20 +30,7 @@ export default function StandalonePageFrame(props: StandalonePageFrameProps) {
         {props.children}
       </div>
 
-      <div className="standalone-footer">
-        <a href="https://github.com/shuaiplus/NodeWarden" target="_blank" rel="noreferrer">NodeWarden Repository</a>
-        <span> | </span>
-        <a href="https://github.com/shuaiplus" target="_blank" rel="noreferrer">Author: @shuaiplus</a>
-        <span> | </span>
-        <a
-          href="https://github.com/shuaiplus/NodeWarden/releases/latest"
-          target="_blank"
-          rel="noreferrer"
-          className="standalone-version"
-        >
-          v{APP_VERSION}
-        </a>
-      </div>
+
     </div>
   );
 }
