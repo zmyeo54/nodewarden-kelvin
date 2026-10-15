@@ -44,6 +44,7 @@ function isLocale(value: unknown): value is Locale {
 }
 
 function resolveInitialLocale(): Locale {
+  return 'en';
   try {
     const saved = localStorage.getItem(LOCALE_STORAGE_KEY);
     if (isLocale(saved)) return saved;
