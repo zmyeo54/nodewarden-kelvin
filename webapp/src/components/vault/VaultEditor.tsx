@@ -392,6 +392,20 @@ export default function VaultEditor(props: VaultEditorProps) {
         </label>
       </div>
 
+      {props.draft.type === 2 && (
+        <div className="card">
+          <h4>{t('txt_notes')}</h4>
+          <label className="field">
+            <textarea
+              className="input textarea"
+              rows={10}
+              value={props.draft.notes}
+              onInput={(e) => props.onUpdateDraft({ notes: (e.currentTarget as HTMLTextAreaElement).value })}
+            />
+          </label>
+        </div>
+      )}
+
       {props.draft.type === 1 && (
         <div className="card">
           <h4>{t('txt_login_credentials')}</h4>
@@ -737,10 +751,12 @@ export default function VaultEditor(props: VaultEditorProps) {
 
       <div className="card">
         <h4>{t('txt_additional_options')}</h4>
-        <label className="field">
-          <span>{t('txt_notes')}</span>
-          <textarea className="input textarea" value={props.draft.notes} onInput={(e) => props.onUpdateDraft({ notes: (e.currentTarget as HTMLTextAreaElement).value })} />
-        </label>
+        {props.draft.type !== 2 && (
+          <label className="field">
+            <span>{t('txt_notes')}</span>
+            <textarea className="input textarea" value={props.draft.notes} onInput={(e) => props.onUpdateDraft({ notes: (e.currentTarget as HTMLTextAreaElement).value })} />
+          </label>
+        )}
         <label className="check-line">
           <input type="checkbox" checked={props.draft.reprompt} onInput={(e) => props.onUpdateDraft({ reprompt: (e.currentTarget as HTMLInputElement).checked })} />
           {t('txt_master_password_reprompt')}
