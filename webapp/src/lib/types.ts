@@ -263,6 +263,8 @@ export interface Cipher {
   fields?: CipherField[] | null;
   decName?: string;
   decNotes?: string;
+  /** True if only list-view fields (name, username, URI) are decrypted. Use decryptCipherFullFromList() to decrypt the rest. */
+  _listOnly?: boolean;
 }
 
 export interface SendTextData {
